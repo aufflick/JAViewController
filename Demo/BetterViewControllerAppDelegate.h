@@ -9,13 +9,14 @@
 #import <Cocoa/Cocoa.h>
 
 @class BVCMainViewController;
-
+@class BVCNextViewController;
 
 @interface BetterViewControllerAppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *window;
     BVCMainViewController *mainViewController;
 }
 
-@property (nonatomic, retain) IBOutlet NSWindow *window;
+@property (nonatomic, strong) BVCNextViewController * nextVC;
+@property (nonatomic, strong) IBOutlet NSWindow *window;
 
 @end

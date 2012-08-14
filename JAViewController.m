@@ -12,7 +12,7 @@
 @implementation JAViewController
 
 + (id)viewController {
-    return [[[self alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil] autorelease];
+    return [[self alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
 }
 
 - (void)loadView {

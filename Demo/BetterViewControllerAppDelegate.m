@@ -10,7 +10,7 @@
 #import "BVCMainViewController.h"
 
 @interface BetterViewControllerAppDelegate ()
-@property (nonatomic, retain) BVCMainViewController *mainViewController;
+@property (nonatomic, strong) BVCMainViewController *mainViewController;
 @end
 
 

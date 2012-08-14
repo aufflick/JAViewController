@@ -8,7 +8,7 @@
 
 #import "BVCMainViewController.h"
 #import "BVCNextViewController.h"
-
+#import "BetterViewControllerAppDelegate.h"
 
 @implementation BVCMainViewController
 
@@ -33,7 +33,9 @@
 }
 
 - (IBAction)showNextView:(id)sender {
-    BVCNextViewController *viewController = [BVCNextViewController viewController];
+    BVCNextViewController * viewController = [BVCNextViewController viewController];
+    // there needs to be a strong reference to the new VC somewhere or the autoreleasepoo will destroy it
+    ((BetterViewControllerAppDelegate *)[[NSApplication sharedApplication] delegate]).nextVC = viewController;
     [self.view.window.contentView replaceSubview:self.view with:viewController.view];
 }
 
