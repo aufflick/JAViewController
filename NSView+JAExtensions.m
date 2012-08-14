@@ -58,17 +58,17 @@ static BOOL hasSwizzledViewControllerMethods = NO;
 }
 
 - (void)layoutSubviews {
-    objc_setAssociatedObject(self, JAViewExtensionsNeedsLayoutKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &JAViewExtensionsNeedsLayoutKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (void)setNeedsLayout {
-    objc_setAssociatedObject(self, JAViewExtensionsNeedsLayoutKey, [NSNull null], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &JAViewExtensionsNeedsLayoutKey, [NSNull null], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     [self setNeedsDisplay:YES];
 }
 
 - (BOOL)needsLayout {
-    return objc_getAssociatedObject(self, JAViewExtensionsNeedsLayoutKey) != nil;
+    return objc_getAssociatedObject(self, &JAViewExtensionsNeedsLayoutKey) != nil;
 }
 
 
@@ -100,7 +100,7 @@ static BOOL hasSwizzledViewControllerMethods = NO;
         [self.viewController setNextResponder:nil];
     }
     
-    objc_setAssociatedObject(self, JAViewExtensionsViewControllerKey, newViewController, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, &JAViewExtensionsViewControllerKey, newViewController, OBJC_ASSOCIATION_ASSIGN);
     
     if(newViewController != nil) {
         NSResponder *ownNextResponder = [self nextResponder];
@@ -110,7 +110,7 @@ static BOOL hasSwizzledViewControllerMethods = NO;
 }
 
 - (NSViewController *)viewController {
-    return objc_getAssociatedObject(self, JAViewExtensionsViewControllerKey);
+    return objc_getAssociatedObject(self, &JAViewExtensionsViewControllerKey);
 }
 
 - (void)custom_viewWillMoveToSuperview:(NSView *)newSuperview {
